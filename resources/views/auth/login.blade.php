@@ -50,7 +50,7 @@ $(document).ready(function() {
                 success: function(response) { // Correction de 'seccess' en 'success'
                     if (response.data == 1) {
                       // Redirect to admin dashboard
-                      window.location.href = "{{route('dashboard')}}";
+                      window.location.href = "{{route('admin.dashboard')}}";
                      Swal.fire({
                         title: 'Success!',
                         text: 'Login successful admin ',
@@ -58,7 +58,7 @@ $(document).ready(function() {
                         confirmButtonText: 'Close'
                     });
                     }else if(response.data == 2) {
-                      window.location.href = "{{route('dashboard')}}";
+                      window.location.href = "{{route('home')}}";
 
                       Swal.fire({
                         title: 'Success!',

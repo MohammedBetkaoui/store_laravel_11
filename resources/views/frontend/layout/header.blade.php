@@ -29,11 +29,39 @@
 									</li>
 								</ul>
 							</div>
+							
 							<div class="top_bar_user">
-								<div class="user_icon"><img src="images/user.svg" alt=""></div>
-								<div><a href="{{route('register')}}">Register</a></div>
-								<div><a href="{{route('login')}}">Sign in</a></div>
+								<div class="user_icon">
+									<img src="images/user.svg" alt="">
+								</div>
+							
+								@guest
+									<!-- Utilisateur non connecté : Afficher Login et Register -->
+									<div><a href="{{ route('register') }}">Register</a></div>
+									<div><a href="{{ route('login') }}">Sign in</a></div>
+								@endguest
+							
+								@auth
+									<!-- Utilisateur connecté : Afficher le rôle et Sign Out -->
+									<div>
+										<span>Welcome, {{ Auth::user()->name }} ({{ Auth::user()->role }})</span>
+									</div>
+									
+									@if(Auth::user()->role === 'admin')
+									<div><a href="{{ route('admin.dashboard') }}">Admin Panel</a></div>
+								@endif
+								<div class="logout-container">
+									<form method="POST" action="{{ route('logout') }}">
+										@csrf
+										<button type="submit" class="btn btn-logout">
+											<i class="icon ion-power"></i> Sign Out
+										</button>
+									</form>
+								</div>
+								
+								@endauth
 							</div>
+							
 						</div>
 					</div>
 				</div>
@@ -315,3 +343,5 @@
 		</div>
 
 	</header>
+	
+		
