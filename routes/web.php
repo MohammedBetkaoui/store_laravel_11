@@ -11,8 +11,10 @@ use App\Http\Middleware\IsAdmin;
 Route::controller(frontendController::class)->group(function () {
     Route::get('/', 'home')->name('home');
     Route::any('/user/login', 'login')->name('user.login');
-});
 
+
+Route::get('/forgint-password', 'forgint_password')->name('forgint-password');
+});
 // Routes Backend avec Middleware
 Route::middleware(['auth', 'verified', IsAdmin::class])->group(function () {
     Route::controller(BackendController::class)->group(function () {

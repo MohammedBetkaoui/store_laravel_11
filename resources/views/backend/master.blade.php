@@ -28,7 +28,7 @@
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
 
-    <title>admin</title>
+    <title>my store-@yield('title')</title>
 
     <!-- vendor css -->
     <link href="{{asset('backend/lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
@@ -49,7 +49,7 @@
     <!-- ########## END: RIGHT PANEL ########## --->
     @extends('backend.layout.notification')
     <!-- ########## START: MAIN PANEL ########## -->
-     @extends('backend.layout.main')
+    @yield('content')
     <!-- ########## END: MAIN PANEL ########## -->
 
     <script src="{{asset('backend/lib/jquery/jquery.js')}}"></script>

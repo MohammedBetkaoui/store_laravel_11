@@ -9,11 +9,11 @@
   <div class="tx-center mg-b-60">Professional Admin Template Design</div>
 
   <div class="form-group">
-    <input type="text" id="email" class="form-control" placeholder="Enter your username">
+    <input type="email" id="email" class="form-control" placeholder="Enter your username">
   </div><!-- form-group -->
   <div class="form-group">
     <input type="password" id="password" class="form-control" placeholder="Enter your password">
-    <a href="" class="tx-info tx-12 d-block mg-t-10">Forgot password?</a>
+    <a href="{{route('password.request')}}" class="tx-info tx-12 d-block mg-t-10">Forgot password?</a>
   </div><!-- form-group -->
   <button type="submit" class="btn btn-info btn-block loginbtn">Sign In</button>
 
