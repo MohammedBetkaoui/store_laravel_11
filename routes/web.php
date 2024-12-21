@@ -9,7 +9,8 @@ use App\Http\Controllers\frontendController;
 // });
 
 Route::controller(frontendController::class)->group(function(){
-    Route::get('/','home');
+    Route::get('/','home')->name('home');
+    Route::any('/user/login','login');
 });
 
 Route::get('/dashboard', function () {

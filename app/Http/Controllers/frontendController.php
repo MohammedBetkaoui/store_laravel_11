@@ -14,15 +14,33 @@ class frontendController extends Controller
 {
     public function home(){
 
-    //     $user = new User();
-    //     $user->name        = 'Administrator';
-    //     $user->email       = 'admin@gmail.com';
-    //     $user->password    = Hash::make('123456789000');
-    //     $user->created_at  =Carbon::now();
-
-    //     $user->save();
-    //     $user->assignRole('admin'); 
-    //   return $user;
          return view('frontend.index');
+    }
+
+    public function login(Request $request){
+          if($request->isMethod('POST')){
+            $check = $request->all();
+
+            if(Auth::guard('web')->attempt(['email'=>$check['email'],'password'=>$check['password']])){
+                $user= User::where('email','=',$check['email'])->first();
+                    
+                if($user->role == 'admin'){
+                    Auth::login($user);
+                    return response()->json(['data' => 1]);
+                }elseif($user->role =='user'){
+                    Auth::login($user);
+                    return response()->json(['data' => 2]);
+                }
+                
+                }else{
+                    return response()->json(['data' => 0]);
+
+                }
+          
+
+        }else{
+            return redirect()->route('home');
+        }
+
     }
 }

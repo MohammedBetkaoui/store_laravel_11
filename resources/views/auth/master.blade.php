@@ -12,6 +12,8 @@
     <meta name="twitter:title" content="Starlight">
     <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="twitter:image" content="http://themepixels.me/starlight/img/starlight-social.png">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     <!-- Facebook -->
     <meta property="og:url" content="http://themepixels.me/starlight">
@@ -48,6 +50,8 @@
     <script src="{{asset('/backend/lib/popper.js/popper.js')}}"></script>
     <script src="{{asset('/backend/lib/bootstrap/bootstrap.js')}}"></script>
     <script src="{{asset('/backend/lib/select2/js/select2.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   @yield('js')
     <script>
       $(function(){
         'use strict';
