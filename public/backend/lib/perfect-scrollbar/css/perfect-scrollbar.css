@@ -7,7 +7,7 @@
   @supports (-ms-overflow-style: none) {
     .ps {
       overflow: auto !important; } }
-  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  @media screen and (-forced-colors: active), (forced-colors: none) {
     .ps {
       overflow: auto !important; } }
   .ps.ps--active-x > .ps__scrollbar-x-rail,

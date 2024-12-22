@@ -3,7 +3,7 @@
 @section('content')
 <div class="sl-mainpanel">
     <nav class="breadcrumb sl-breadcrumb">
-      <a class="breadcrumb-item" href="index.html">BTK-TECK</a>
+      <a class="breadcrumb-item" href="{{route('home')}}">BTK-TECK</a>
       <span class="breadcrumb-item active">Dashboard</span>
     </nav>
 

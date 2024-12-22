@@ -102,51 +102,7 @@
               </div>
             </div><!-- media -->
           </a>
-          <a href="" class="media-list-link read">
-            <div class="media pd-x-20 pd-y-15">
-              <img src="img/img5.jpg" class="wd-40 rounded-circle" alt="">
-              <div class="media-body">
-                <p class="tx-13 mg-b-0 tx-gray-700"><strong class="tx-medium tx-gray-800">Julius Erving</strong> wants to connect with you on your conversation with <strong class="tx-medium tx-gray-800">Ronnie Mara</strong></p>
-                <span class="tx-12">October 01, 2017 6:08pm</span>
-              </div>
-            </div><!-- media -->
-          </a>
-          <a href="" class="media-list-link read">
-            <div class="media pd-x-20 pd-y-15">
-              <img src="../img/img8.jpg" class="wd-40 rounded-circle" alt="">
-              <div class="media-body">
-                <p class="tx-13 mg-b-0 tx-gray-700"><strong class="tx-medium tx-gray-800">Suzzeth Bungaos</strong> tagged you and 12 others in a post.</p>
-                <span class="tx-12">September 27, 2017 6:45am</span>
-              </div>
-            </div><!-- media -->
-          </a>
-          <a href="" class="media-list-link read">
-            <div class="media pd-x-20 pd-y-15">
-              <img src="../img/img10.jpg" class="wd-40 rounded-circle" alt="">
-              <div class="media-body">
-                <p class="tx-13 mg-b-0 tx-gray-700">10+ new items added are for sale in your <strong class="tx-medium tx-gray-800">Sale Group</strong></p>
-                <span class="tx-12">September 28, 2017 11:30pm</span>
-              </div>
-            </div><!-- media -->
-          </a>
-          <a href="" class="media-list-link read">
-            <div class="media pd-x-20 pd-y-15">
-              <img src="../img/img9.jpg" class="wd-40 rounded-circle" alt="">
-              <div class="media-body">
-                <p class="tx-13 mg-b-0 tx-gray-700"><strong class="tx-medium tx-gray-800">Mellisa Brown</strong> appreciated your work <strong class="tx-medium tx-gray-800">The Great Pyramid</strong></p>
-                <span class="tx-12">September 26, 2017 11:01am</span>
-              </div>
-            </div><!-- media -->
-          </a>
-          <a href="" class="media-list-link read">
-            <div class="media pd-x-20 pd-y-15">
-              <img src="../img/img5.jpg" class="wd-40 rounded-circle" alt="">
-              <div class="media-body">
-                <p class="tx-13 mg-b-0 tx-gray-700"><strong class="tx-medium tx-gray-800">Julius Erving</strong> wants to connect with you on your conversation with <strong class="tx-medium tx-gray-800">Ronnie Mara</strong></p>
-                <span class="tx-12">September 23, 2017 9:19pm</span>
-              </div>
-            </div><!-- media -->
-          </a>
+         
         </div><!-- media-list -->
       </div><!-- #notifications -->
 

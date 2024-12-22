@@ -17,9 +17,11 @@ Route::controller(frontendController::class)->group(function () {
 
 });
 // Routes Backend avec Middleware
-Route::middleware(['auth', 'verified', IsAdmin::class])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
+   
     Route::controller(BackendController::class)->group(function () {
         Route::get('/admin/dashboard', 'adminDashboard')->name('admin.dashboard');
+        Route::get('/add_category', 'adminAddCategory')->name('add.category');
     });
 });
 

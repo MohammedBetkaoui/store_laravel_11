@@ -10,4 +10,9 @@ class BackendController extends Controller
     {
         return view('backend.index');
     }
+
+    public function adminAddCategory() {
+        return view('backend.categories.add');
+    }
+    
 }
