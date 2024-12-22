@@ -1,25 +1,66 @@
-<x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+@extends('auth.master')
+@section('title', 'Forgot Password')
+
+@section('content')
+<div class="d-flex align-items-center justify-content-center bg-sl-primary ht-100v">
+    <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white">
+        <div class="signin-logo tx-center tx-24 tx-bold tx-inverse">Starlight <span class="tx-info tx-normal">Admin</span></div>
+        <div class="tx-center mg-b-60">Password Reset</div>
+        
+        <form method="POST" action="{{ route('password.email') }}">
+            @csrf
+            <div class="form-group">
+                <input type="email" id="email" name="email" class="form-control" placeholder="Enter your Email">
+            </div>
+            <button type="submit" class="btn btn-info btn-block loginbtn">Send Reset Link</button>
+        </form>
+
+        <div class="mg-t-60 tx-center">Not yet a member? <a href="{{ route('register') }}" class="tx-info">Sign Up</a></div>
     </div>
+</div>
+@endsection
 
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@section('js')
+<script>
+$(document).ready(function() {
+    $('.loginbtn').click(function(e) {
+        e.preventDefault();
+        let email = $('#email').val();
 
-    <form method="POST" action="{{ route('password.email') }}">
-        @csrf
-
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <x-primary-button>
-                {{ __('Email Password Reset Link') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+        if (email === "") {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Please enter your email',
+                icon: 'error',
+                confirmButtonText: 'Close'
+            });
+        } else {
+            $.ajax({
+                method: 'POST',
+                url: '{{ route('password.email') }}',
+                data: { email: email },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: response.message,
+                        icon: 'success',
+                        confirmButtonText: 'Close'
+                    });
+                },
+                error: function(xhr) {
+                    Swal.fire({
+                        title: 'Error!',
+                        text: xhr.responseJSON?.message || 'An error occurred.',
+                        icon: 'error',
+                        confirmButtonText: 'Close'
+                    });
+                }
+            });
+        }
+    });
+});
+</script>
+@endsection

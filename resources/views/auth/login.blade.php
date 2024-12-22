@@ -13,7 +13,7 @@
   </div><!-- form-group -->
   <div class="form-group">
     <input type="password" id="password" class="form-control" placeholder="Enter your password">
-    <a href="{{route('password.request')}}" class="tx-info tx-12 d-block mg-t-10">Forgot password?</a>
+  
   </div><!-- form-group -->
   <button type="submit" class="btn btn-info btn-block loginbtn">Sign In</button>
 

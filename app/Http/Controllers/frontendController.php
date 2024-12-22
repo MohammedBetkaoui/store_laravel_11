@@ -44,7 +44,5 @@ class frontendController extends Controller
 
     }
 
-    public function forgint_password(){
-        return view('auth.forgot-password');
-    }
+  
 }
