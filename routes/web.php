@@ -18,12 +18,23 @@ Route::controller(frontendController::class)->group(function () {
 });
 // Routes Backend avec Middleware
 Route::middleware(['auth', 'verified'])->group(function () {
-   
     Route::controller(BackendController::class)->group(function () {
         Route::get('/admin/dashboard', 'adminDashboard')->name('admin.dashboard');
         Route::get('/add_category', 'adminAddCategory')->name('add.category');
+        Route::post('/store_category', 'adminStoreCategory')->name('store.category');
+        Route::get('/view_categories', 'adminViewCategories')->name('view.categories');
+        Route::get('/fetch_categories', 'fetchCategories')->name('fetch.categories'); // Route Ajax
+        Route::delete('/delete_category/{id}', 'deleteCategory')->name('delete.category'); // Route suppression
+        Route::get('/edit_category/{id}', 'editCategory')->name('edit.category');
+        Route::put('/update_category/{id}', 'updateCategory')->name('update.category');
+        
+
+
+       
+        
     });
 });
+
 
 
 // Routes Profil

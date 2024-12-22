@@ -16,20 +16,19 @@
           <div class="card pd-20 pd-sm-40 form-layout form-layout-4">
             <h6 class="card-body-title">Add new Category</h6><br><br>
             <div class="row">
-              <label class="col-sm-4 form-control-label" id="name">Category Name: <span class="tx-danger">*</span></label>
+              <label class="col-sm-4 form-control-label" for="name">Category Name: <span class="tx-danger">*</span></label>
               <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                <input type="text" class="form-control" placeholder="Category Name">
-              </div>
-            </div><!-- row -->
-            <div class="row mg-t-20">
-              <label class="col-sm-4 form-control-label" id="order">Category Order: <span class="tx-danger">*</span></label>
-              <div class="col-sm-8 mg-t-10 mg-sm-t-0">
-                <input type="number" class="form-control" placeholder="Category Order">
+                <input type="text" id="name" class="form-control" placeholder="Category Name">
               </div>
             </div>
-         
+            <div class="row mg-t-20">
+              <label class="col-sm-4 form-control-label" for="order">Category Order: <span class="tx-danger">*</span></label>
+              <div class="col-sm-8 mg-t-10 mg-sm-t-0">
+                <input type="number" id="order" class="form-control" placeholder="Category Order">
+              </div>
+            </div>
             <div class="form-layout-footer mg-t-30">
-              <button class="btn btn-info mg-r-5" id="newCat" >Save</button>
+              <button class="btn btn-info mg-r-5" id="newCat">Save</button>
             </div><!-- form-layout-footer -->
           </div><!-- card -->
         </div><!-- col-6 -->
@@ -46,21 +45,47 @@
 @section('js')
  <script>
     
-      $(document).ready(function(){
+    $(document).ready(function() {
+    $('#newCat').click(function(e) {
+        e.preventDefault();
 
-         $('#newCat').click(function(e){
-            e.preventDefault();
-            console.log('New');
-            let name = $('#name').val();
-            let order = $('#order').val();
-            // var _token = $('input[name="_token"]').val();
+        let name = $('#name').val();
+        let order = $('#order').val();
 
-      })
-      })
-
-
-
+        $.ajax({
+            url: '{{ route("store.category") }}',
+            type: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                name: name,
+                order: order
+            },
+            success: function(response) {
+                if (response.success) {
+                    swal.fire('success', response.message, 'success');
+                    setTimeout(function() {
+                        window.location.href = '{{ route("view.categories") }}';
+                    }, 2000);
+                }
+            },
+            error: function(xhr) {
+                if (xhr.status === 422) {
+                    let errors = xhr.responseJSON.errors;
+                   swal.fire('error', errors[Object.keys(errors)[0]][0], 'error');
+                    
+                } else {
+                  swal.fire('error', xhr.statusText, 'error');
+                }
+            }
+        });
+    });
+});
 
  </script>
-
 @endsection
+
+
+
+
+
+

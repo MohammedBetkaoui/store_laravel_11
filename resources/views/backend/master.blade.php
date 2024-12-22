@@ -36,6 +36,10 @@
     <link href="{{asset('backend/lib/perfect-scrollbar/css/perfect-scrollbar.css')}}" rel="stylesheet">
     <link href="{{asset('backend/lib/rickshaw/rickshaw.min.css')}}" rel="stylesheet">
 
+    <link href="{{asset('backend/lib/highlightjs/github.css')}}" rel="stylesheet">
+    <link href="{{asset('backend/lib/datatables/jquery.dataTables.css')}}" rel="stylesheet">
+    <link href="{{asset('backend/lib/select2/css/select2.min.css')}}" rel="stylesheet">
+
     <!-- Starlight CSS -->
     <link rel="stylesheet" href="{{asset('backend/css/starlight.css')}}">
   </head>
@@ -68,7 +72,13 @@
     <script src="{{asset('backend/js/starlight.js')}}"></script>
     <script src="{{asset('backend/js/ResizeSensor.js')}}"></script>
     <script src="{{asset('backend/js/dashboard.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+    <script src="{{asset('backend/lib/highlightjs/highlight.pack.js')}}"></script>
+    <script src="{{asset('backend/lib/datatables/jquery.dataTables.js')}}"></script>
+    <script src="{{asset('backend/lib/datatables-responsive/dataTables.responsive.js')}}"></script>
+    <script src="{{asset('backend/lib/select2/js/select2.min.js')}}"></script>
     @yield('js')
   </body>
 </html>

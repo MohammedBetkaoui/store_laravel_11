@@ -38,25 +38,11 @@ table.dataTable thead .sorting_desc,
 table.dataTable thead .sorting_asc_disabled,
 table.dataTable thead .sorting_desc_disabled {
   cursor: pointer;
-  *cursor: hand;
+  cursor: hand;
   background-repeat: no-repeat;
   background-position: center right;
 }
-table.dataTable thead .sorting {
-  background-image: url("../images/sort_both.png");
-}
-table.dataTable thead .sorting_asc {
-  background-image: url("../images/sort_asc.png");
-}
-table.dataTable thead .sorting_desc {
-  background-image: url("../images/sort_desc.png");
-}
-table.dataTable thead .sorting_asc_disabled {
-  background-image: url("../images/sort_asc_disabled.png");
-}
-table.dataTable thead .sorting_desc_disabled {
-  background-image: url("../images/sort_desc_disabled.png");
-}
+
 table.dataTable tbody tr {
   background-color: #ffffff;
 }
@@ -269,7 +255,7 @@ table.dataTable td {
 .dataTables_wrapper {
   position: relative;
   clear: both;
-  *zoom: 1;
+  zoom: 1;
   zoom: 1;
 }
 .dataTables_wrapper .dataTables_length {
@@ -301,7 +287,7 @@ table.dataTable td {
   text-align: center;
   text-decoration: none !important;
   cursor: pointer;
-  *cursor: hand;
+  cursor: hand;
   color: #333 !important;
   border: 1px solid transparent;
   border-radius: 2px;
@@ -397,7 +383,7 @@ table.dataTable td {
   clear: both;
 }
 .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody {
-  *margin-top: -1px;
+  margin-top: -1px;
   -webkit-overflow-scrolling: touch;
 }
 .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody > table > thead > tr > th, .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody > table > thead > tr > td, .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody > table > tbody > tr > th, .dataTables_wrapper .dataTables_scroll div.dataTables_scrollBody > table > tbody > tr > td {
