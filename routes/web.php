@@ -11,6 +11,8 @@ use App\Http\Middleware\IsAdmin;
 Route::controller(frontendController::class)->group(function () {
     Route::get('/', 'home')->name('home');
     Route::any('/user/login', 'login')->name('user.login');
+    Route::get('/productsByCategory/{id}','productByCategory')->name('products.by.category');
+
 
 
 

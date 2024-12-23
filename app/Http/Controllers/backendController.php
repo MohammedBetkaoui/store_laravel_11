@@ -227,7 +227,7 @@ public function updateProduct(Request $request, $id)
 
 public function show($id) {
     $product = Product::with('images', 'category')->findOrFail($id);
-    return view('backend.products.show', compact('product'));
+    return view('backend.products.show ', compact('product'));
 }
 
 

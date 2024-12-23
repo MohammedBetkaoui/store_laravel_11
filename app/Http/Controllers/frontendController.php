@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\category;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -9,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Carbon\Carbon;
+use App\Models\Product;
 
 class frontendController extends Controller
 {
@@ -44,5 +46,10 @@ class frontendController extends Controller
 
     }
 
-  
+public function productByCategory($id){
+
+    $products = Product::where('category_id','=', $id)->latest()->paginate(10);
+   $category =category::where('id','=', $id)->first();
+    return view('frontend.productsByCategory', compact('products','category'));
+}
 }
