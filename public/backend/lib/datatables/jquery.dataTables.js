@@ -11608,7 +11608,7 @@
 			 * Text which is displayed when the table is processing a user action
 			 * (usually a sort command or similar).
 			 *  @type string
-			 *  @default Processing...
+			 * 
 			 *
 			 *  @dtopt Language
 			 *  @name DataTable.defaults.language.processing
@@ -11622,7 +11622,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sProcessing": "Processing...",
+			
 	
 	
 			/**
@@ -14357,7 +14357,6 @@
 		"sInfo": "dataTables_info",
 		"sPaging": "dataTables_paginate paging_", /* Note that the type is postfixed */
 		"sLength": "dataTables_length",
-		"sProcessing": "dataTables_processing",
 	
 		/* Sorting */
 		"sSortAsc": "sorting_asc",

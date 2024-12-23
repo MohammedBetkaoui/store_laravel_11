@@ -9,15 +9,10 @@
     </nav>
 
     <div class="sl-pagebody">
-        <div class="sl-page-title">
-            <h5>Categories Table</h5>
-            <p>List of all categories.</p>
-        </div>
-
+    
         <div class="card pd-20 pd-sm-40">
             <h6 class="card-body-title">Categories List</h6>
-            <p class="mg-b-20 mg-sm-b-30">This table displays categories dynamically loaded via Ajax.</p>
-
+<br><br>
             <div class="table-wrapper">
                 <table id="categoriesTable" class="table display responsive nowrap">
                     <thead>
@@ -88,6 +83,7 @@
             type: 'PUT',
             success: function(response) {
                 if (response.success) {
+                    swal.fire('success', response.message, 'success');
                     let category = response.data;
                     $('#editCategoryModal #category_id').val(category.id);
                     $('#editCategoryModal #edit_name').val(category.name);
@@ -121,7 +117,7 @@
             success: function(response) {
                 if (response.success) {
                     $('#editCategoryModal').modal('hide');
-                    alert(response.message);
+                    swal.fire('success', response.message, 'success');
                     table.ajax.reload();
                 } else {
                     alert('Failed to update category: ' + response.message);
@@ -132,6 +128,34 @@
             }
         });
     });
+    // Suppression de catégorie
+$('#categoriesTable').on('click', '.delete-btn', function() {
+    let categoryId = $(this).data('id');
+
+    if (confirm('Are you sure you want to delete this category?')) {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            }
+        });
+
+        $.ajax({
+            url: '{{ route('delete.category', '') }}/' + categoryId,
+            type: 'DELETE',
+            success: function(response) {
+                if (response.success) {
+                    swal.fire('success', response.message, 'success');                    
+                    table.ajax.reload();
+                } else {
+                    alert('Failed to delete category: ' + response.message);
+                }
+            },
+            error: function(xhr) {
+                alert('An error occurred: ' + xhr.responseJSON.message);
+            }
+        });
+    }
+});
 });
 
 

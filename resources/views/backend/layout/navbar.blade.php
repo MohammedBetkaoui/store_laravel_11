@@ -18,11 +18,13 @@
      </a><!-- sl-menu-link -->
     <!-- sl-menu-link -->
      <a href="#" class="sl-menu-link">
-       <div class="sl-menu-item">
-         <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
-         <span class="menu-item-label">Categories</span>
-         <i class="menu-item-arrow fa fa-angle-down"></i>
-       </div><!-- menu-item -->
+      <div class="sl-menu-item">
+ 
+        <i class="menu-item-icon ion-ios-list-outline tx-20"></i> <!-- Changement de l'icône -->
+        <span class="menu-item-label">Categories</span>
+        <i class="menu-item-arrow fa fa-angle-down"></i>
+     </div>
+     <!-- menu-item -->
      </a><!-- sl-menu-link -->
      <ul class="sl-menu-sub nav flex-column">
        <li class="nav-item"><a href="{{route('add.category')}}" class="nav-link">Add</a></li>
@@ -30,18 +32,17 @@
        
      </ul>
      <a href="#" class="sl-menu-link">
-       <div class="sl-menu-item">
-         <i class="menu-item-icon icon ion-ios-gear-outline tx-24"></i>
-         <span class="menu-item-label">Forms</span>
-         <i class="menu-item-arrow fa fa-angle-down"></i>
-       </div><!-- menu-item -->
+      <div class="sl-menu-item">
+        <i class="menu-item-icon ion-ios-box-outline tx-24"></i>
+        <span class="menu-item-label">Products</span>
+        <i class="menu-item-arrow fa fa-angle-down"></i>
+     </div>
+     <!-- menu-item -->
      </a><!-- sl-menu-link -->
      <ul class="sl-menu-sub nav flex-column">
-       <li class="nav-item"><a href="form-elements.html" class="nav-link">Form Elements</a></li>
-       <li class="nav-item"><a href="form-layouts.html" class="nav-link">Form Layouts</a></li>
-       <li class="nav-item"><a href="form-validation.html" class="nav-link">Form Validation</a></li>
-       <li class="nav-item"><a href="form-wizards.html" class="nav-link">Form Wizards</a></li>
-       <li class="nav-item"><a href="form-editor-text.html" class="nav-link">Text Editor</a></li>
+       <li class="nav-item"><a href="{{route('add.product')}}" class="nav-link">Add</a></li>
+       <li class="nav-item"><a href="{{route('view.products')}}" class="nav-link">View</a></li>
+       
      </ul>
      <a href="#" class="sl-menu-link">
        <div class="sl-menu-item">
