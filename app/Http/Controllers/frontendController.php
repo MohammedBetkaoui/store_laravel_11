@@ -46,10 +46,31 @@ class frontendController extends Controller
 
     }
 
-public function productByCategory($id){
-
-    $products = Product::where('category_id','=', $id)->latest()->paginate(10);
-   $category =category::where('id','=', $id)->first();
-    return view('frontend.productsByCategory', compact('products','category'));
-}
+    public function productByCategory($id)
+    {
+        // Récupérer les produits selon la catégorie et les trier par date
+        $products = Product::where('category_id', $id)->latest()->paginate(10);
+    
+        // Récupérer tous les produits de la catégorie spécifique
+        $category = Category::find($id);
+    
+        // Récupérer toutes les catégories disponibles
+        $categories = Category::all();
+    
+        // Récupérer les prix min et max
+        $minPrice = Product::where('category_id', $id)->min('new_price');
+        $maxPrice = Product::where('category_id', $id)->max('new_price');
+    $produits =Product::all();
+        // Calculer les remises pour chaque produit
+        $discounts = $products->getCollection()->map(function ($product) {
+            if ($product->old_price && $product->new_price && $product->old_price > 0) {
+                return (($product->old_price - $product->new_price) * 100) / $product->old_price;
+            }
+            return 0;
+        })->toArray();
+    
+        // Passer les variables à la vue
+        return view('frontend.productsByCategory', compact('products','produits', 'category', 'discounts', 'categories', 'minPrice', 'maxPrice'));
+    }
+    
 }
