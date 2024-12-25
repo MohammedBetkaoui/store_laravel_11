@@ -100,7 +100,16 @@
 <div class="product_item discount">
     <div class="product_border"></div>
     <div class="product_image d-flex flex-column align-items-center justify-content-center">
-        <img src="{{ asset('images/featured_1.png') }}" alt="">
+        @if($product->images->isNotEmpty())
+        <div class="viewed_image">
+            <img src="{{ asset('storage/' . $product->images->first()->image_path) }}" alt="{{ $product->name }}">
+        </div>
+    @else
+        <!-- Image par défaut si aucune image n'est disponible -->
+        <div class="viewed_image">
+            <img src="{{ asset('images/default_product.jpg') }}" alt="Image par défaut">
+        </div>
+    @endif
     </div>
     <div class="product_content">
         <div class="product_price">
@@ -246,10 +255,6 @@
 </div>
 
 
-
-
-
-</script>
 <script src="{{asset('/js/jquery-3.3.1.min.js')}} "></script>
 <script src="{{asset('/styles/bootstrap4/popper.js')}}"></script>
 <script src="{{asset('/styles/bootstrap4/bootstrap.min.js')}}"></script>

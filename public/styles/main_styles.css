@@ -1351,18 +1351,7 @@ select option
 {
 	width: 100% !important;
 }
-.deals_image
-{
-	width: 100%;
-}
-.deals_image img
-{
-	width: 100%;
-}
-.deals_content
-{
-	margin-top: 33px;
-}
+
 .deals_item_category a
 {
 	font-size: 14px;

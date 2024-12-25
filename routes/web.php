@@ -12,6 +12,7 @@ Route::controller(frontendController::class)->group(function () {
     Route::get('/', 'home')->name('home');
     Route::any('/user/login', 'login')->name('user.login');
     Route::get('/productsByCategory/{id}','productByCategory')->name('products.by.category');
+    Route::get('/product/{id}', 'show_product')->name('show.detail');
 
 
 

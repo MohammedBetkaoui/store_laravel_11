@@ -16,7 +16,8 @@ class frontendController extends Controller
 {
     public function home(){
 
-         return view('frontend.index');
+           $produits=Product::all();
+         return view('frontend.index',compact('produits'));
     }
 
     public function login(Request $request){
@@ -72,5 +73,18 @@ class frontendController extends Controller
         // Passer les variables à la vue
         return view('frontend.productsByCategory', compact('products','produits', 'category', 'discounts', 'categories', 'minPrice', 'maxPrice'));
     }
+
+    public function show_product($id) {
+        $produits= Product::all();
+        $produit = Product::with('images')->find($id); // Charger les images avec le produit
+    
+        if (!$produit) {
+            abort(404, 'Produit non trouvé');
+        }
+    
+        return view('frontend.product', compact('produit','produits'));
+    }
+    
+    
     
 }
