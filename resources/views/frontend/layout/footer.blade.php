@@ -8,7 +8,7 @@
 							<div class="logo"><a href="#">OneTech</a></div>
 						</div>
 						<div class="footer_title">Got Question? Call Us 24/7</div>
-						<div class="footer_phone">+38 068 005 3570</div>
+						<div class="footer_phone">035742265</div>
 						<div class="footer_contact_text">
 							<p>17 Princess Road, London</p>
 							<p>Grester London NW18JR, UK</p>
