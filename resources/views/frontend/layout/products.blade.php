@@ -159,50 +159,56 @@
                 <!-- Featured -->
                 <div class="featured">
                     <div class="tabbed_container">
-                        <div class="tabs">
-                            <ul class="clearfix">
-                                <li class="active">Featured</li>
-                                <li>On Sale</li>
-                                <li>Best Rated</li>
-                            </ul>
-                            <div class="tabs_line"><span></span></div>
-                        </div>
+                       
 
                         <!-- Product Panel -->
                         <div class="product_panel panel active">
                             <div class="featured_slider slider">
-
+                        
                                 <!-- Slider Item -->
                                 @foreach($produits as $produit)
-
                                 <div class="featured_slider_item">
                                     <div class="border_active"></div>
                                     <div class="product_item discount d-flex flex-column align-items-center justify-content-center text-center">
-                                        <div class="product_image d-flex flex-column align-items-center justify-content-center"><img width="50%" height="70%" src="{{ asset('storage/' . $produit->images->first()->image_path) }} " alt=""></div>
+                                        <div class="product_image d-flex flex-column align-items-center justify-content-center">
+                                            <img width="50%" height="70%" src="{{ asset('storage/' . $produit->images->first()->image_path) }}" alt="">
+                                        </div>
                                         <div class="product_content">
-                                            <div class="product_price discount">{{ $produit->new_price  }}<span> {{ $produit->old_price }} </span></div>
-                                            <div class="product_name"><div><a href="{{ route('show.detail', ['id' => $produit->id]) }}">
-                                                {{ $produit->name }}
-                                            </a></div></div>
+                                            <div class="product_price discount">
+                                                @if($produit->new_price && $produit->new_price < $produit->old_price)
+                                                    {{ $produit->new_price }}
+                                                    <span>{{ $produit->old_price }}</span>
+                                                @else
+                                                    {{ $produit->old_price }}
+                                                @endif
+                                            </div>
+                                            <div class="product_name">
+                                                <div>
+                                                    <a href="{{ route('show.detail', ['id' => $produit->id]) }}">
+                                                        {{ $produit->name }}
+                                                    </a>
+                                                </div>
+                                            </div>
                                             <div class="product_extras">
-            
                                                 <button class="product_cart_button">Add to Cart</button>
                                             </div>
                                         </div>
                                         <div class="product_fav"><i class="fas fa-heart"></i></div>
+                                        @if($produit->new_price && $produit->new_price < $produit->old_price)
                                         <ul class="product_marks">
                                             <li class="product_mark product_discount">
                                                 -{{ intval((($produit->old_price - $produit->new_price) * 100) / $produit->old_price) }}%
-
                                             </li>
                                         </ul>
+                                        @endif
                                     </div>
                                 </div>
-                        @endforeach
-
+                                @endforeach
+                        
                             </div>
                             <div class="featured_slider_dots_cover"></div>
                         </div>
+                        
 
                         
                         

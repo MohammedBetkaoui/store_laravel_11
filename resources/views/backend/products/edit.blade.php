@@ -19,18 +19,17 @@
             <h6 class="card-body-title">Edit Product Form</h6>
             <p class="mg-b-20 mg-sm-b-30">Update product details below.</p>
 
-            <!-- Formulaire d'édition de produit -->
             <form action="{{ route('update.product', $product->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 
-                <!-- Champ Nom du Produit -->
+                <!-- Nom du Produit -->
                 <div class="form-group">
                     <label for="name">Product Name</label>
                     <input type="text" name="name" class="form-control" value="{{ $product->name }}" required>
                 </div>
 
-                <!-- Champ Catégorie du Produit -->
+                <!-- Catégorie du Produit -->
                 <div class="form-group">
                     <label for="category">Product Category</label>
                     <select name="category_id" class="form-control" required>
@@ -42,24 +41,34 @@
                     </select>
                 </div>
 
-                <!-- Champ Prix (Ancien et Nouveau) -->
+                <!-- Prix (Ancien) -->
                 <div class="form-group">
                     <label for="old_price">Old Price</label>
                     <input type="number" name="old_price" class="form-control" value="{{ $product->old_price }}" required>
                 </div>
+
+                <!-- Promotion Checkbox -->
                 <div class="form-group">
-                    <label for="new_price">New Price</label>
-                    <input type="number" name="new_price" class="form-control" value="{{ $product->new_price }}" required>
+                    <label>
+                        <input type="checkbox" id="hasPromotion" name="has_promotion" {{ $product->new_price ? 'checked' : '' }}>
+                        Has Promotion
+                    </label>
                 </div>
 
-                <!-- Affichage des images existantes -->
+                <!-- Prix (Nouveau) -->
+                <div class="form-group" id="newPriceField" style="{{ $product->new_price ? '' : 'display:none;' }}">
+                    <label for="new_price">New Price</label>
+                    <input type="number" name="new_price" class="form-control" value="{{ $product->new_price }}">
+                </div>
+
+                <!-- Images Existantes -->
                 <div class="form-group">
                     <label>Existing Images</label>
                     <div class="row">
                         @foreach($product->images as $image)
                             <div class="col-md-3">
                                 <img src="{{ asset('storage/' . $image->image_path) }}" class="img-fluid" alt="Product Image">
-                                <label for="image_delete[{{ $image->id }}]">
+                                <label>
                                     <input type="checkbox" name="image_delete[]" value="{{ $image->id }}">
                                     Delete this image
                                 </label>
@@ -68,13 +77,13 @@
                     </div>
                 </div>
 
-                <!-- Champ Image du Produit -->
+                <!-- Ajouter de nouvelles images -->
                 <div class="form-group">
                     <label for="images">Add New Images</label>
                     <input type="file" name="images[]" class="form-control" multiple>
                 </div>
 
-                <!-- Champ Description du Produit -->
+                <!-- Description -->
                 <div class="form-group">
                     <label for="description">Product Description</label>
                     <textarea name="description" class="form-control" rows="3" required>{{ $product->description }}</textarea>
@@ -87,4 +96,11 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('hasPromotion').addEventListener('change', function() {
+        let newPriceField = document.getElementById('newPriceField');
+        newPriceField.style.display = this.checked ? 'block' : 'none';
+    });
+</script>
 @endsection

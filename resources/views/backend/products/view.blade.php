@@ -66,15 +66,15 @@
             { data: 'old_price', name: 'old_price' },
             { data: 'new_price', name: 'new_price' },
             { 
-    data: null,
-    render: function(data, type, row) {
-        return `
-            <a href="/products/${row.id}" class="btn btn-sm btn-info">Show</a>
-            <a href="{{ route('edit.product', '') }}/${row.id}" class="btn btn-sm btn-warning">Edit</a>
-            <button class="btn btn-sm btn-danger delete-btn" data-id="${row.id}">Delete</button>
-        `;
-    }
-}
+                data: null,
+                render: function(data, type, row) {
+                    return `
+                        <a href="/products/${row.id}" class="btn btn-sm btn-info">Show</a>
+                        <a href="{{ route('edit.product', '') }}/${row.id}" class="btn btn-sm btn-warning">Edit</a>
+                        <button class="btn btn-sm btn-danger delete-btn" data-id="${row.id}">Delete</button>
+                    `;
+                }
+            }
         ],
         language: {
             searchPlaceholder: 'Search...',
@@ -83,34 +83,45 @@
         }
     });
 
-    // Suppression de produit
+    // Suppression de produit avec confirmation
     $('#productsTable').on('click', '.delete-btn', function() {
         let productId = $(this).data('id');
 
-        if (confirm('Are you sure you want to delete this product?')) {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                }
-            });
-
-            $.ajax({
-                url: '{{ route('delete.product', '') }}/' + productId,
-                type: 'DELETE',
-                success: function(response) {
-                    if (response.success) {
-                        swal.fire('success', response.message, 'success');
-                        table.ajax.reload();
-                    } else {
-                        alert('Failed to delete product: ' + response.message);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'This will delete the product and its associated images!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
                     }
-                },
-                error: function(xhr) {
-                    alert('An error occurred: ' + xhr.responseJSON.message);
-                }
-            });
-        }
+                });
+
+                $.ajax({
+                    url: '{{ route('delete.product', '') }}/' + productId,
+                    type: 'DELETE',
+                    success: function(response) {
+                        if (response.success) {
+                            Swal.fire('Deleted!', response.message, 'success');
+                            table.ajax.reload();
+                        } else {
+                            Swal.fire('Error!', response.message, 'error');
+                        }
+                    },
+                    error: function(xhr) {
+                        Swal.fire('Error!', 'An error occurred: ' + xhr.responseJSON.message, 'error');
+                    }
+                });
+            }
+        });
     });
 });
+
 </script>
 @endsection

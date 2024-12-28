@@ -15,49 +15,17 @@
 <link rel="stylesheet" type="text/css" href="{{asset('/styles/main_styles.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('/styles/responsive.css')}}">
 
-
-
-
 </head>
 
 <body>
 
-<div class="super_container">
-	
-	<!-- Header -->
-	
+
 @include('frontend.layout.header')
 @yield('content')
 @include('frontend.layout.product_s')
 @include('frontend.layout.brand')
 @include('frontend.layout.footer')
-
-	<!-- Copyright -->
-
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					
-					<div class="copyright_container d-flex flex-sm-row flex-column align-items-center justify-content-start">
-						<div class="copyright_content"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</div>
-						<div class="logos ml-sm-auto">
-							<ul class="logos_list">
-								<li><a href="#"><img src="images/logos_1.png" alt=""></a></li>
-								<li><a href="#"><img src="images/logos_2.png" alt=""></a></li>
-								<li><a href="#"><img src="images/logos_3.png" alt=""></a></li>
-								<li><a href="#"><img src="images/logos_4.png" alt=""></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+			
 
 <script src="{{asset('/js/jquery-3.3.1.min.js')}} "></script>
 <script src="{{asset('/styles/bootstrap4/popper.js')}}"></script>
@@ -73,6 +41,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="{{asset('/js/custom.js')}}"></script>
 
 
+<script src="{{asset('/plugins/Isotope/isotope.pkgd.min.js')}}"></script>
+<script src="{{asset('/plugins/jquery-ui-1.12.1.custom/jquery-ui.js')}}"></script>
+<script src="{{asset('/plugins/parallax-js-master/parallax.min.js')}}"></script>
+<script src="{{asset('/js/shop_custom.js')}}"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 </body>
 

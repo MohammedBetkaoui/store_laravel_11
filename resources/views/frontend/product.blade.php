@@ -7,7 +7,6 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('styles/product_styles.css') }}">
 <link rel="stylesheet" type="text/css" href="{{ asset('styles/product_responsive.css') }}">
-
 <div class="single_product">
     <div class="container">
         <div class="row">
@@ -41,7 +40,15 @@
                 <div class="product_description">
                     <div class="product_category">{{ $produit->category->name ?? 'Non catégorisé' }}</div>
                     <div class="product_name">{{ $produit->name }}</div>
-                    <div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+                   <!-- Prix du produit -->
+                   <div class="product_price">
+                    @if($produit->new_price && $produit->new_price < $produit->old_price)
+                        <span style="color: rgb(27, 42, 214); font-size: 25px ; font-weight: bold;">{{ $produit->new_price }} Dz</span>
+                        <span style="text-decoration: line-through; color: rgb(251, 4, 4); font-size:16px">{{ $produit->old_price }}</span>
+                    @else
+                        <span style="color: rgb(27, 42, 214); font-size: 25px ; font-weight: bold;">{{ $produit->old_price ?? $produit->new_price }} Dz</span>
+                    @endif
+                </div>
                     <div class="product_text">
                         <p>{{ $produit->description }}</p>
                     </div>
@@ -59,16 +66,22 @@
                                 </div>
                             </div>
 
-                            <div class="product_price">
-                                ${{ $produit->new_price }}
-                                @if($produit->old_price)
-                                    <span>${{ $produit->old_price }}</span>
-                                @endif
-                            </div>
+                           
+
+                            <!-- Boutons d'action -->
                             <div class="button_container">
                                 <button type="button" class="button cart_button">Add to Cart</button>
                                 <div class="product_fav"><i class="fas fa-heart"></i></div>
                             </div>
+
+                            <!-- Pourcentage de réduction -->
+                            @if($produit->new_price && $produit->new_price < $produit->old_price)
+                                <div class="product_discount">
+                                    <span>
+                                        -{{ intval((($produit->old_price - $produit->new_price) * 100) / $produit->old_price) }}%
+                                    </span>
+                                </div>
+                            @endif
                         </form>
                     </div>
                 </div>
@@ -77,6 +90,7 @@
         </div>
     </div>
 </div>
+
 
 
 
