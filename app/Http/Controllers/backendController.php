@@ -200,7 +200,7 @@ public function updateProduct(Request $request, $id)
         'old_price' => 'required|numeric',
         'new_price' => 'nullable|numeric',
         'description' => 'required|string',
-        'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:4096',
         'image_delete.*' => 'nullable|exists:product_images,id',
     ]);
 
